@@ -3,7 +3,6 @@ using UnityEngine;
 public class Phone : MonoBehaviour
 {
 
-    public GameObject RightTrigger;
     public float phoneMoving;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,7 +14,12 @@ public class Phone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+    }
+
+    public void PhoneEnter()
+    {
+        transform.position += new Vector3(-phoneMoving, 0f, 0f);
     }
 
     public void OnMouseExit()
