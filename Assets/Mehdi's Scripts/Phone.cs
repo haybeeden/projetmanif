@@ -1,14 +1,20 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class Phone : MonoBehaviour
 {
+    public GameObject rightTrigger;
 
-    public float phoneMoving;
+    public float enterTweenPosition;
+    public float exitTweenPosition;
+    public float tweenDuration;
+
+    public float triggerRessurectionTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        /*RightTrigger.GetComponent<HoverTrigger>();*/
+
     }
 
     // Update is called once per frame
@@ -19,12 +25,23 @@ public class Phone : MonoBehaviour
 
     public void PhoneEnter()
     {
-        transform.position += new Vector3(-phoneMoving, 0f, 0f);
+        transform.DOMoveX(enterTweenPosition, tweenDuration)
+           .SetEase(Ease.OutCirc);
+        Debug.Log("Acacab");
+        /*DOTween.Kill("enterPhone");*/
+        rightTrigger.SetActive(false);
     }
 
     public void OnMouseExit()
     {
-        print("BBL");
-        transform.position += new Vector3(phoneMoving, 0f, 0f);
+        Debug.Log("BBL");
+        transform.DOMoveX(exitTweenPosition, tweenDuration)
+           .SetEase(Ease.OutCirc);
+        Invoke ("AbleTrigger", triggerRessurectionTime);
+    }
+
+    public void AbleTrigger()
+    {
+        rightTrigger.SetActive(true);
     }
 }

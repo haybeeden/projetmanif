@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class Righ : MonoBehaviour
 {
 
@@ -18,11 +19,12 @@ public class Righ : MonoBehaviour
         if (mouseOver == true)
         {
             phone.PhoneEnter();
+            mouseOver = false;
         }
 
     }
 
-    public void OnMouseEnter()
+    public void OnMouseOver()
     {
         print("hello world");
         mouseOver = true;
