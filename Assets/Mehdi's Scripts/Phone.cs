@@ -3,7 +3,7 @@ using DG.Tweening;
 
 public class Phone : MonoBehaviour
 {
-    public GameObject rightTrigger;
+    public GameObject phoneTrigger;
 
     public float enterTweenPosition;
     public float exitTweenPosition;
@@ -27,21 +27,21 @@ public class Phone : MonoBehaviour
     {
         transform.DOMoveX(enterTweenPosition, tweenDuration)
            .SetEase(Ease.OutCirc);
+        /*easings.net*/
         Debug.Log("Acacab");
-        /*DOTween.Kill("enterPhone");*/
-        rightTrigger.SetActive(false);
+        phoneTrigger.SetActive(false);
     }
 
     public void OnMouseExit()
     {
         Debug.Log("BBL");
         transform.DOMoveX(exitTweenPosition, tweenDuration)
-           .SetEase(Ease.OutCirc);
+           .SetEase(Ease.OutExpo);
         Invoke ("AbleTrigger", triggerRessurectionTime);
     }
 
     public void AbleTrigger()
     {
-        rightTrigger.SetActive(true);
+        phoneTrigger.SetActive(true);
     }
 }
