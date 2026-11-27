@@ -1,4 +1,6 @@
 using UnityEngine;
+using DG.Tweening;
+
 
 public class CameraManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class CameraManager : MonoBehaviour
     // [SerializeField] private float cameraSpeed = 0;
     private int cameraCurrent = 0;
     private int cameraNew = 0;
+    public float duration;
 
     void Start()
     {
@@ -27,7 +30,7 @@ public class CameraManager : MonoBehaviour
         {            
             Debug.Log(mainCamera.transform.position);
             Debug.Log(cameraOffset);
-            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, cameraOffset, 1); //pos start, pos goal, length
+            mainCamera.transform.DOMove(cameraOffset, duration); // mouvement de la caméra
             cameraCurrent = cameraNew;
         }
 
